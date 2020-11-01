@@ -13,7 +13,7 @@ class ViewController: UIViewController, PresentableController {
     
     var presentableControllerViewType: PresentableControllerViewType
     
-    weak var coordinator: (Coordinator & Buying & Selling)?
+    weak var coordinator: (Buying & Selling)?
     
     private var selectedProduct = 0
     private var buyAction: (() -> Void)?
