@@ -11,7 +11,7 @@ import UIKit
 protocol Coordinator: class {
     var parentCoordinator: Coordinator? { get set }
     var childCoordinators: [Coordinator] { get set }
-    var presenter: PresenterController { get set }
+    var presenter: PresenterController? { get set }
     
     func start()
 }

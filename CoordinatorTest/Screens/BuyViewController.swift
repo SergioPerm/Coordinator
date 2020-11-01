@@ -10,12 +10,12 @@ import UIKit
 
 class BuyViewController: UIViewController, PresentableController {
     var presentableControllerViewType: PresentableControllerViewType
-    var presenter: PresenterController
+    var presenter: PresenterController?
     
     weak var coordinator: BuyCoordinator?
     var productType: Int = 0
     
-    init(presenter: PresenterController, presentableControllerViewType: PresentableControllerViewType) {
+    init(presenter: PresenterController?, presentableControllerViewType: PresentableControllerViewType) {
         self.presentableControllerViewType = presentableControllerViewType
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +49,10 @@ class BuyViewController: UIViewController, PresentableController {
         ]
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    deinit {
+        print("deinit buy vc")
     }
     
     @objc private func closeAction(sender: UIButton) {

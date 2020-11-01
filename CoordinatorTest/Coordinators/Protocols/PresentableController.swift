@@ -16,7 +16,7 @@ enum PresentableControllerViewType {
 
 protocol PresentableController: UIViewController {
     var presentableControllerViewType: PresentableControllerViewType { get set }
-    var presenter: PresenterController { get set }
+    var presenter: PresenterController? { get set }
 }
 
 extension PresentableController where Self: UIViewController {

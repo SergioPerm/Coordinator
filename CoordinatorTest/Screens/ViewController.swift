@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, PresentableController {
-    var presenter: PresenterController
+    var presenter: PresenterController?
     
     var presentableControllerViewType: PresentableControllerViewType
     
@@ -22,7 +22,7 @@ class ViewController: UIViewController, PresentableController {
     private var menuViewController: LeftMenuViewController?
     private var withSlideMenu: Bool
     
-    init(presenter: PresenterController, presentableControllerViewType: PresentableControllerViewType, withSlideMenu: Bool) {
+    init(presenter: PresenterController?, presentableControllerViewType: PresentableControllerViewType, withSlideMenu: Bool) {
         self.presentableControllerViewType = presentableControllerViewType
         self.presenter = presenter
         self.withSlideMenu = withSlideMenu
@@ -66,6 +66,8 @@ extension ViewController: LeftMenuViewControllerDelegate {
 extension ViewController {
     private func setup() {
         navigationController?.title = "OLOLO"
+        
+        
         
         view.backgroundColor = UIColor.white
         

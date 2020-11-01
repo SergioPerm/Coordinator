@@ -34,8 +34,11 @@ extension UIViewController {
             view.showDimmedBelowSubview(subview: child.view, for: view)
         }
     }
-    
-    func remove() {
+        
+    func remove(withDimmedBack: Bool) {
+        if withDimmedBack {
+            view.removeDimmedView()
+        }
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()

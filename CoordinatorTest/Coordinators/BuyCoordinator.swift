@@ -12,11 +12,11 @@ class BuyCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     
     var childCoordinators = [Coordinator]()
-    var presenter: PresenterController
+    var presenter: PresenterController?
     
     private var productType: Int
     
-    init(presenter: PresenterController, with productType: Int) {
+    init(presenter: PresenterController?, with productType: Int) {
         self.presenter = presenter
         self.productType = productType
     }
@@ -25,6 +25,6 @@ class BuyCoordinator: Coordinator {
         let vc = BuyViewController(presenter: presenter, presentableControllerViewType: .navigationStackController)
         vc.coordinator = self
         vc.productType = productType
-        presenter.push(vc: vc)
+        presenter?.push(vc: vc)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PresenterController: UIViewController {
-    var presentableControllers: [PresentableController] { get set }
+    var presentableControllers: [PresentableController?] { get set }
     
     func push(vc: PresentableController)
     func pop(vc: PresentableController)

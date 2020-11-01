@@ -9,7 +9,7 @@
 import UIKit
 
 class ContainerPresenterController: UIViewController, PresenterController {
-    var presentableControllers: [PresentableController] = []
+    var presentableControllers: [PresentableController?] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +17,24 @@ class ContainerPresenterController: UIViewController, PresenterController {
     }
     
     func pop(vc: PresentableController) {
+        presentableControllers = presentableControllers.filter { $0! != vc as UIViewController }
         
+        switch vc.presentableControllerViewType {
+        case .menuViewController:
+            vc.remove(withDimmedBack: false)
+        case .modalViewController:
+            vc.remove(withDimmedBack: true)
+        case .navigationStackController:
+            if let presentableControllerNavBar = getNavigationController(from: vc) {
+                presentableControllerNavBar.popViewController(animated: true)
+            }
+        }
     }
     
     func push(vc: PresentableController) {
+                
+        presentableControllers = presentableControllers.filter { $0 != nil }
+        
         presentableControllers.append(vc)
         
         switch vc.presentableControllerViewType {
@@ -29,11 +43,7 @@ class ContainerPresenterController: UIViewController, PresenterController {
         case .modalViewController:
             add(vc, withDimmedBack: true)
         case .navigationStackController:
-            let presentableControllerNavBar = presentableControllers.compactMap {
-                $0.getNavigationController()
-            }.last
-                       
-            if let presentableControllerNavBar = presentableControllerNavBar {
+            if let presentableControllerNavBar = getNavigationController(from: vc) {
                 presentableControllerNavBar.pushViewController(vc, animated: true)
                 add(presentableControllerNavBar)
             } else {
@@ -42,5 +52,13 @@ class ContainerPresenterController: UIViewController, PresenterController {
                 add(navigationController)
             }
         }
+    }
+}
+
+extension ContainerPresenterController {
+    private func getNavigationController(from vc: PresentableController) -> UINavigationController? {
+        return presentableControllers.compactMap {
+            $0?.getNavigationController()
+        }.last
     }
 }

@@ -15,7 +15,7 @@ protocol LeftMenuViewControllerDelegate: UIViewController {
 
 class LeftMenuViewController: UIViewController, PresentableController {
     var presentableControllerViewType: PresentableControllerViewType
-    var presenter: PresenterController
+    var presenter: PresenterController?
     
     weak var delegate: LeftMenuViewControllerDelegate? {
         didSet {
@@ -39,7 +39,7 @@ class LeftMenuViewController: UIViewController, PresentableController {
     
     private var testTapHandler: (() -> Void)?
     
-    init(presenter: PresenterController, presentableControllerViewType: PresentableControllerViewType) {
+    init(presenter: PresenterController?, presentableControllerViewType: PresentableControllerViewType) {
         self.presenter = presenter
         self.presentableControllerViewType = presentableControllerViewType
         
@@ -91,7 +91,7 @@ extension LeftMenuViewController {
     
     private func configureMenuViewController() {
         if !isViewLoaded {
-            presenter.push(vc: self)
+            presenter?.push(vc: self)
         }
     }
     
@@ -120,7 +120,7 @@ extension LeftMenuViewController {
         } else {
             animateCenterPanel(targetPosition: 0) { _ in
                 self.currentState = .menuCollapsed
-                self.navigationController?.remove()
+                self.presenter?.pop(vc: self)
             }
         }
         

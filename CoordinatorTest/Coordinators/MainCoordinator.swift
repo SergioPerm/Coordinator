@@ -11,7 +11,7 @@ import UIKit
 class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationControllerDelegate {
     var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
-    var presenter: PresenterController
+    var presenter: PresenterController?
     
     init(presenter: PresenterController) {
         self.presenter = presenter
@@ -20,7 +20,8 @@ class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationContr
     func start() {
         let vc = ViewController(presenter: presenter, presentableControllerViewType: .navigationStackController, withSlideMenu: true)
         vc.coordinator = self
-        presenter.push(vc: vc)
+        presenter?.push(vc: vc)
+        vc.navigationController?.delegate = self
     }
         
     func buy(to productType: Int) {
@@ -31,9 +32,9 @@ class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationContr
     }
     
     func sell() {
-        let vc = SellViewController()
+        let vc = SellViewController(presenter: presenter, presentableControllerViewType: .modalViewController)
         vc.coordinator = self
-        //navigationController.pushViewController(vc, animated: true)
+        presenter?.push(vc: vc)
     }
     
     func childDidFinish(_ child: Coordinator?) {
@@ -53,6 +54,7 @@ class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationContr
         
         if let buyViewController = fromViewController as? BuyViewController {
             childDidFinish(buyViewController.coordinator)
+            presenter?.pop(vc: buyViewController)
         }
     }
     

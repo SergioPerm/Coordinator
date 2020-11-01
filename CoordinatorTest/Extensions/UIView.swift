@@ -23,4 +23,10 @@ extension UIView {
 
         view.insertSubview(dimmedView, belowSubview: subview)
     }
+    
+    func removeDimmedView() {
+        if let dimmedView = UIView.dimmedViews.popLast(){
+            dimmedView.removeFromSuperview()
+        }
+    }
 }
