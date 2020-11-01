@@ -16,8 +16,6 @@ class ViewController: UIViewController, PresentableController {
     weak var coordinator: (Buying & Selling)?
     
     private var selectedProduct = 0
-    private var buyAction: (() -> Void)?
-    private var sellAction: (() -> Void)?
     
     private var menuViewController: LeftMenuViewController?
     private var withSlideMenu: Bool
@@ -49,10 +47,6 @@ class ViewController: UIViewController, PresentableController {
 }
 
 extension ViewController: LeftMenuViewControllerDelegate {
-    func presentMenu() {
-        
-    }
-    
     func addMenuButton() {
         self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(tapMenuAction(sender:)))
     }
