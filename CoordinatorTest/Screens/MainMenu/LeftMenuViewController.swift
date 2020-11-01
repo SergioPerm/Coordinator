@@ -90,7 +90,7 @@ extension LeftMenuViewController {
     }
     
     private func configureMenuViewController() {
-        if !isViewLoaded {
+        if currentState == .menuCollapsed {
             presenter?.push(vc: self)
         }
     }

@@ -32,9 +32,6 @@ class ContainerPresenterController: UIViewController, PresenterController {
     }
     
     func push(vc: PresentableController) {
-                
-        presentableControllers = presentableControllers.filter { $0 != nil }
-        
         presentableControllers.append(vc)
         
         switch vc.presentableControllerViewType {
