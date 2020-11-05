@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Buying: class {
+protocol Buying: Coordinator {
     func buy(to productType: Int)
 }

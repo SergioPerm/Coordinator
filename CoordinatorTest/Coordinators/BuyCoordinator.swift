@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyCoordinator: Coordinator {
+class BuyCoordinator: NSObject, Coordinator {
     var parentCoordinator: Coordinator?
     
     var childCoordinators = [Coordinator]()
@@ -20,11 +20,17 @@ class BuyCoordinator: Coordinator {
         self.presenter = presenter
         self.productType = productType
     }
-        
+    
     func start() {
         let vc = BuyViewController(presenter: presenter, presentableControllerViewType: .navigationStackController)
         vc.coordinator = self
         vc.productType = productType
-        presenter?.push(vc: vc)
+        presenter?.push(vc: vc, completion: { [weak self] in
+            self?.parentCoordinator?.childDidFinish(self)
+        })
+    }
+    
+    deinit {
+        print("buy coordinator dealocated!")
     }
 }

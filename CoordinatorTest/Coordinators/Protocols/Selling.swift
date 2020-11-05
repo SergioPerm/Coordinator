@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Selling: class {
+protocol Selling: Coordinator {
     func sell()
 }

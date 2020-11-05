@@ -91,7 +91,7 @@ extension LeftMenuViewController {
     
     private func configureMenuViewController() {
         if currentState == .menuCollapsed {
-            presenter?.push(vc: self)
+            presenter?.push(vc: self, completion: nil)
         }
     }
     

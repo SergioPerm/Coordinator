@@ -20,10 +20,9 @@ class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationContr
     func start() {
         let vc = ViewController(presenter: presenter, presentableControllerViewType: .navigationStackController, withSlideMenu: true)
         vc.coordinator = self
-        presenter?.push(vc: vc)
-        vc.navigationController?.delegate = self
+        presenter?.push(vc: vc, completion: nil)
     }
-        
+            
     func buy(to productType: Int) {
         let child = BuyCoordinator(presenter: presenter, with: productType)
         child.parentCoordinator = self
@@ -32,30 +31,9 @@ class MainCoordinator: NSObject, Buying, Selling, Coordinator, UINavigationContr
     }
     
     func sell() {
-        let vc = SellViewController(presenter: presenter, presentableControllerViewType: .modalViewController)
-        vc.coordinator = self
-        presenter?.push(vc: vc)
+        let child = SellCoordinator(presenter: presenter)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start()
     }
-    
-    func childDidFinish(_ child: Coordinator?) {
-        guard let child = child else { return }
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
-    
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
-        
-        if navigationController.viewControllers.contains(fromViewController) { return }
-        
-        if let buyViewController = fromViewController as? BuyViewController {
-            childDidFinish(buyViewController.coordinator)
-            presenter?.pop(vc: buyViewController)
-        }
-    }
-    
 }

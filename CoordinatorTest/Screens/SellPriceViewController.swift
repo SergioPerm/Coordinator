@@ -1,19 +1,17 @@
 //
-//  SellViewController.swift
+//  SellPriceViewController.swift
 //  CoordinatorTest
 //
-//  Created by kluv on 28/10/2020.
+//  Created by kluv on 05/11/2020.
 //  Copyright © 2020 itotdel. All rights reserved.
 //
 
 import UIKit
 
-class SellViewController: UIViewController, PresentableController, SelectSellPriceCallback {
-    var coordinator: SelectSellPrice?
-    
+class SellPriceViewController: UIViewController, PresentableController {
     var presentableControllerViewType: PresentableControllerViewType
     var presenter: PresenterController?
-        
+    
     init(presenter: PresenterController?, presentableControllerViewType: PresentableControllerViewType) {
         self.presenter = presenter
         self.presentableControllerViewType = presentableControllerViewType
@@ -23,16 +21,16 @@ class SellViewController: UIViewController, PresentableController, SelectSellPri
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.frame = CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: view.frame.width - 40, height: view.frame.height - 40))
+        view.frame = CGRect(origin: CGPoint(x: 50, y: 50), size: CGSize(width: view.frame.width - 100, height: view.frame.height - 100))
         view.frame.origin = CGPoint(x: view.frame.origin.x, y: view.frame.maxY)
-        view.backgroundColor = .white
+        view.backgroundColor = .yellow
         
         let title = UILabel()
-        title.text = "SELL"
+        title.text = "SELL PRICE"
         title.textAlignment = .center
         title.translatesAutoresizingMaskIntoConstraints = false
         
@@ -44,12 +42,6 @@ class SellViewController: UIViewController, PresentableController, SelectSellPri
         
         view.addSubview(closeBtn)
         
-        let sellPriceBtn = UIButton(type: .contactAdd)
-        sellPriceBtn.translatesAutoresizingMaskIntoConstraints = false
-        sellPriceBtn.addTarget(self, action: #selector(sellPriceAction(sender:)), for: .touchUpInside)
-        
-        view.addSubview(sellPriceBtn)
-        
         let constraints: [NSLayoutConstraint] = [
             title.widthAnchor.constraint(equalToConstant: 60),
             title.heightAnchor.constraint(equalToConstant: 30),
@@ -58,19 +50,18 @@ class SellViewController: UIViewController, PresentableController, SelectSellPri
             closeBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             closeBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             closeBtn.widthAnchor.constraint(equalToConstant: 30),
-            closeBtn.heightAnchor.constraint(equalToConstant: 30),
-            sellPriceBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            sellPriceBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 10)
+            closeBtn.heightAnchor.constraint(equalToConstant: 30)
         ]
         
         NSLayoutConstraint.activate(constraints)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         UIView.animate(withDuration: 0.3) {
-            self.view.frame.origin = CGPoint(x: 20, y: 20)
+            self.view.frame.origin = CGPoint(x: 50, y: 50)
         }
     }
     
@@ -83,12 +74,7 @@ class SellViewController: UIViewController, PresentableController, SelectSellPri
         presenter?.pop(vc: self)
     }
     
-    @objc private func sellPriceAction(sender: UIButton) {
-        coordinator?.selecteSellPrice()
-    }
-    
     deinit {
-        print("deinit sell vc")
+        print("deinit sellprice vc")
     }
-    
 }

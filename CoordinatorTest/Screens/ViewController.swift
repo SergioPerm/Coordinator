@@ -9,12 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, PresentableController {
+    var coordinator: (Buying & Selling)?
     var presenter: PresenterController?
-    
     var presentableControllerViewType: PresentableControllerViewType
-    
-    weak var coordinator: (Buying & Selling)?
-    
+        
     private var selectedProduct = 0
     
     private var menuViewController: LeftMenuViewController?

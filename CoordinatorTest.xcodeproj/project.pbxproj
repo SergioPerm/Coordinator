@@ -24,6 +24,9 @@
 		B16E6C892549E90B0071FD55 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16E6C882549E90B0071FD55 /* UIViewController.swift */; };
 		B16E6C8B2549F0BE0071FD55 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16E6C8A2549F0BE0071FD55 /* UIView.swift */; };
 		B16E6C8F2549F9840071FD55 /* PresentableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16E6C8E2549F9840071FD55 /* PresentableController.swift */; };
+		B19F504025541E69001B878B /* SellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19F503F25541E69001B878B /* SellCoordinator.swift */; };
+		B19F504225541F69001B878B /* SelectSellPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19F504125541F69001B878B /* SelectSellPrice.swift */; };
+		B19F504425541FB3001B878B /* SellPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19F504325541FB3001B878B /* SellPriceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		B16E6C882549E90B0071FD55 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B16E6C8A2549F0BE0071FD55 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		B16E6C8E2549F9840071FD55 /* PresentableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableController.swift; sourceTree = "<group>"; };
+		B19F503F25541E69001B878B /* SellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellCoordinator.swift; sourceTree = "<group>"; };
+		B19F504125541F69001B878B /* SelectSellPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSellPrice.swift; sourceTree = "<group>"; };
+		B19F504325541FB3001B878B /* SellPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellPriceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 				B1003F56254AF36B00BBB7A2 /* Protocols */,
 				B16E6C77254982320071FD55 /* MainCoordinator.swift */,
 				B16E6C7D25498B870071FD55 /* BuyCoordinator.swift */,
+				B19F503F25541E69001B878B /* SellCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -77,6 +84,7 @@
 				B16E6C81254995800071FD55 /* Selling.swift */,
 				B16E6C8E2549F9840071FD55 /* PresentableController.swift */,
 				B16E6C75254981500071FD55 /* Coordinator.swift */,
+				B19F504125541F69001B878B /* SelectSellPrice.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -88,6 +96,7 @@
 				B16E6C652549812C0071FD55 /* ViewController.swift */,
 				B16E6C79254987960071FD55 /* BuyViewController.swift */,
 				B16E6C7B254987A10071FD55 /* SellViewController.swift */,
+				B19F504325541FB3001B878B /* SellPriceViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 				B16E6C76254981500071FD55 /* Coordinator.swift in Sources */,
 				B16E6C862549CD3B0071FD55 /* ContainerPresenterController.swift in Sources */,
 				B16E6C8F2549F9840071FD55 /* PresentableController.swift in Sources */,
+				B19F504025541E69001B878B /* SellCoordinator.swift in Sources */,
 				B16E6C892549E90B0071FD55 /* UIViewController.swift in Sources */,
 				B16E6C82254995800071FD55 /* Selling.swift in Sources */,
 				B1003F5C254AFF0A00BBB7A2 /* LeftMenuViewController.swift in Sources */,
@@ -237,7 +247,9 @@
 				B16E6C7C254987A10071FD55 /* SellViewController.swift in Sources */,
 				B16E6C662549812C0071FD55 /* ViewController.swift in Sources */,
 				B16E6C7E25498B870071FD55 /* BuyCoordinator.swift in Sources */,
+				B19F504225541F69001B878B /* SelectSellPrice.swift in Sources */,
 				B16E6C80254995450071FD55 /* Buying.swift in Sources */,
+				B19F504425541FB3001B878B /* SellPriceViewController.swift in Sources */,
 				B16E6C842549CC840071FD55 /* PresenterController.swift in Sources */,
 				B16E6C622549812C0071FD55 /* AppDelegate.swift in Sources */,
 				B16E6C78254982320071FD55 /* MainCoordinator.swift in Sources */,

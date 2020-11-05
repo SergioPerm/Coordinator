@@ -11,6 +11,6 @@ import UIKit
 protocol PresenterController: UIViewController {
     var presentableControllers: [PresentableController?] { get set }
     
-    func push(vc: PresentableController)
+    func push(vc: PresentableController, completion: (() -> Void)?)
     func pop(vc: PresentableController)
 }
