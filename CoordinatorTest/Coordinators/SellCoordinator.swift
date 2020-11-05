@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SellCoordinator: NSObject, Coordinator, SelectSellPrice {
+class SellCoordinator: NSObject, Coordinator, SelectSellPriceInput {
     var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var presenter: PresenterController?

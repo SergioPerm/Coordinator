@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SellViewController: UIViewController, PresentableController, SelectSellPriceCallback {
-    var coordinator: SelectSellPrice?
+class SellViewController: UIViewController, PresentableController, SelectSellPriceOutput {
+    var coordinator: SelectSellPriceInput?
     
     var presentableControllerViewType: PresentableControllerViewType
     var presenter: PresenterController?

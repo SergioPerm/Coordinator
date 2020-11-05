@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol SelectSellPrice: Coordinator {
+protocol SelectSellPriceInput: Coordinator {
     func selecteSellPrice()
 }
 
-protocol SelectSellPriceCallback: UIViewController {
-    var coordinator: SelectSellPrice? { get set }
+protocol SelectSellPriceOutput: UIViewController {
+    var coordinator: SelectSellPriceInput? { get set }
 }
